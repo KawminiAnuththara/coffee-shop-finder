@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [{ path: 'coffee', loadChildren: () => import('./coffee/coffee.module').then(m => m.CoffeeModule) }, { path: 'client', loadChildren: () => import('./client/client.module').then(m => m.ClientModule) }]; // Add this line if it's missing
+import { RouterModule } from '@angular/router';
+import { DemoNgZorroAntdModule } from './DemoNgZorroAntdModule';  // Ensure correct import
+import { ReactiveFormsModule } from '@angular/forms';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { AppComponent } from './app.component';  // Import standalone component
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [],  // No need to declare standalone components here
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes), // Ensure this is present
+    RouterModule,
+    NzLayoutModule,  // Necessary imports
+    DemoNgZorroAntdModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  // Do not include AppComponent in bootstrap here
 })
 export class AppModule {}
